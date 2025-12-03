@@ -5,10 +5,7 @@ import (
 )
 
 func main() {
-	age := 15
-	if age > 10 {
-		fmt.Println("курто")
-	} else {
-		fmt.Println("курто")
+	for i:= 0; i<10; i++{
+		fmt.Println(i)
 	}
 }
