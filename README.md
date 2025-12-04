@@ -30,20 +30,20 @@ go mod init <name>
 --------------------
 13) Пример базоваой функции:
 
-    func output_res(user_height float64, user_kg float64) #указать тип/ы данных того, что будем возварщать. Чтобы указать несколько значений типы нужно указать в скобках {
-        imt := user_kg / math.Pow(user_height/100, 2)
-        fmt.Println(imt)
-    }
+	    func output_res(user_height float64, user_kg float64) // указать тип/ы данных того, что будем возварщать. Чтобы указать несколько значений типы нужно указать в скобках {
+	        imt := user_kg / math.Pow(user_height/100, 2)
+	        fmt.Println(imt)
+	    }
 
     Аргументы могут быть обозначены заранее, либо просто переданы значением
 --------------------
 14) Пример условного оператора:
 
-    if age > 10 {
-		fmt.Println("курто")
-	} else {
-		fmt.Println("не курто")
-	}
+	    if age > 10 {
+			fmt.Println("курто")
+		} else {
+			fmt.Println("не курто")
+		}
 
 15) Обозначение условий: && - and, || - or. Остальное стандартно
 
@@ -51,47 +51,47 @@ go mod init <name>
 
 17) В if можно обозначать переменные и присваивать им значения/значения функции:
 
-    if rnak := getRnak(); rank == 'admin' {
-        // код
-    }
+	    if rnak := getRnak(); rank == 'admin' {
+	        // код
+	    }
 --------------------
 18) Базовый цикл for:
     
-    for i:= 0; i<10; i++{
-		fmt.Println(i)
-	}
+	    for i:= 0; i<10; i++{
+			fmt.Println(i)
+		}
 
 19) Импровизированный цикл while, но переменная должна быть объявлена заранее:
 
-    for i < 10 {
-        i++
-    }
+	    for i < 10 {
+	        i++
+	    }
 
 20) Бесконечный цикл обозначается просто for:
 
-    for {
-        if <Условие> {
-            break
-        }
-    }
+	    for {
+	        if <Условие> {
+	            break
+	        }
+	    }
 --------------------
 21) Структура = Class в других языках программирования
 
 22) Ключевое слово для обозначения структуры: 
     
-    type <name struct> struct {
-        field string
-        a, b int
-    }
+	    type <name struct> struct {
+	        field string
+	        a, b int
+	    }
 
 23) Создание экзмепляров структуры:
 
-    data := <name struct>{"word", 1, 2}
-    data := <name struct>{
-        field: "word",
-        a: 1,
-        b: 2,
-    }
+	    data := <name struct>{"word", 1, 2}
+	    data := <name struct>{
+	        field: "word",
+	        a: 1,
+	        b: 2,
+	    }
 
 24) Если создаём структуру, не присываивая значения (data := <name struct>{}), то они будут заполнятся стандартно. В нашем случае field :='' (пустая строка), а переменные a и b будут равны 0
 
@@ -100,10 +100,10 @@ go mod init <name>
 
 26) Для создания анонимных структур нужно использовать слово var. Доступ к полям структуры полчается также, как в обычной структуре
     
-    var <name struct> struct{
-        field string
-        a, b int
-    }
+	    var <name struct> struct{
+	        field string
+	        a, b int
+	    }
 
     Также анонимную структуру можно объявлять так:
 
