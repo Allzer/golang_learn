@@ -204,3 +204,47 @@ go mod init <name>
         }
 
         // для обращения: arr[1][0]
+--------------------
+41) Карты (словари Python). Данные в карте неупорядочены, в отличие от массива. Размер карты - динамический
+
+42) Карту можно создать:
+
+        myMap := make(map[string]int) // функция make предназначена для динамического выделения памяти и инициализации сложных типов данных
+                                      // [string] - тип ключа, int - тип значения
+
+        myMap := map[string]int{      // для создания карты с начальными значениями
+            "item 1": 1,
+            "item 2": 2,
+            "item 3": 3,
+        }
+
+43) Операции со словарями (картами):
+
+    //insert
+
+        myMap["new_number"] = 5
+
+    //read
+
+        fav := myMap["new_number"]
+
+    //del
+
+        delete(myMap, "new_number")
+
+    //check existence
+
+        price, found := myMap["price"] //переменная price - фактическое значение по ключу, переменная found (bool) - указывает было ли найденно значение или нет
+
+        if !found {
+            fmt.Println("price not found")
+            return
+        }
+
+44) Получение всех ключей/значений:
+
+        myMap := make(map[string]int)
+
+        for key, value := range myMap{ //возможно работает, как for i in arr в python 
+            fmt.Println(key, value)
+        }
