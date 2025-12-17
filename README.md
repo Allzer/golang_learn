@@ -322,3 +322,101 @@ go mod init <name>
         first := Coordinate{2,2}
         second := Coordinate{1,5}
         distnce := first.Dist(second) //(-1,3)
+--------------------
+50) Ключевое слово iota. Это слово используется для работы с константами. Часто применяется группировка констант
+
+        const (
+            Online = 0
+            Ofline = 1
+            Maintenance = 2
+            Retired = 3
+        )
+        
+        const (
+            Online = iota //добавляет все тежи значения констант, что и выше, но автоматически
+            Ofline
+            Maintenance
+            Retired
+        )
+
+    Также можно пропускать значения iota 
+        
+        const (
+            s1 = iota
+            -
+            s3 //2
+        )
+    
+    Или начинать с определённого значения
+
+        const (
+            s1 = iota + 3
+            s2 //4
+            s3 //5
+        )
+--------------------
+51) Тестирование
+    Тесты пишутся в отденльных файлах, используя имя файла, который они тестируют: clientApi.go -> clinetApi_test.go
+    Модульные тесты должны находиться в том же пакете
+
+52) Чтобы запустить тесты нужно использовать пакет testing. Он нужен для создания иестов и должен быть импортирован в каждом файле с тестами
+
+53) Пример:
+    main.go
+
+        package main
+
+        import "regexp"
+
+        func IsValidEmail(addr string) bool {
+            re, ok := regexp.Compile(`.+@.+\..+`)
+            if ok != nil{
+                panic("failed to compile regex")
+            } else{
+                return re.Match([]byte(addr))
+            }
+        }
+
+    main_test.go
+
+        package main
+
+        import "testing"
+
+        func TestIsValidEmail(t *testing.T){
+            data := "email@example.com"
+            if !IsValidEmail(data) {
+                t.Errorf("IsValidEmail(%v)=false, want true", data)
+            }
+        }
+    
+    Для запуска тестов нужно предваарительно создать модуль и написать в консоль:
+
+        go test
+
+54) Есть ключевые слова для тестов:
+
+        Fail() - пометить тест, как непройденный
+        Errorf(string) - пометить, как непройденный + написать ошибку
+        FailNow() - пометить тест, как непройденный и прерывает выполненеие теста дальше
+        Fatalf(string) - пометить тест, как непройденный прерывает выполненеи и добавить сообщение
+        Logf() - выводит сообщение только при неуспешном тесте
+
+55) Тестовые таблицы:
+
+        func TestIsValidEmailTable(t *testing.T) {
+            table := []struct {
+                email string
+                want bool
+            }{
+                {"example@mail.com", true},
+                {"miss@tld", false},
+            }
+
+            for _, data := range table {
+                result := IsValidEmail(data.email)
+                if result != data.want {
+                    t.Errorf("%v: %tm want: %t", data.email, result, data.want)
+                }
+            }
+        }
