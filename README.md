@@ -277,3 +277,48 @@ go mod init <name>
         i := 1
         increment(&i)
         // i == 2
+--------------------
+49) Методы - функции, связанные с существующими структурами данных. Это позволяет точечно использовать нотацию с этими структурами
+    Позволяте просто изменять структуры даныых
+
+    Пример с использованием функции:
+
+        type Coordinate struct {
+            X, Y, int
+        }
+
+        func shiftBy(x, y int, coord *Coordinate) {
+            coord.X += x
+            coord.Y += y
+        }
+
+        coord := Coordinate{5, 5}
+        shiftBy(1,1, &coord) //(6, 6)
+
+    Пример с использование методов (указателей):
+
+        type Coordinate struct {
+            X, Y, int
+        }
+
+        func (coord *Coordinate) shiftBy(x, y int) {
+            coord.X += x
+            coord.Y += y
+        }
+
+        coord := Coordinate{5, 5}
+        coord.shiftBy(1,1) //использование точечной нотации
+
+    Пример с использование методов (значение): //т.к мы используем значение, то мы создаём копию структуры и работаем с ней
+
+        type Coordinate struct {
+            X, Y, int
+        }
+
+        func (c Coordinate) Dist(other Coordinate) Coordinate{
+            return Coordinate{c.X-other.X, c.Y-other.y}
+        }
+
+        first := Coordinate{2,2}
+        second := Coordinate{1,5}
+        distnce := first.Dist(second) //(-1,3)
