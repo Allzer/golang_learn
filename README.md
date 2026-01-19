@@ -420,3 +420,26 @@ go mod init <name>
                 }
             }
         }
+--------------------
+56) Интерфейсы позволяют определять поведение типа данных. Они позволяют функциям работать с разными типами данных
+
+        type MyInterface interface {
+            Function1()
+            Function2(x int) int
+        }
+
+        type MyType int
+        func (m MyType) Function1() {}
+        func (m MyType) Function2(x int) int {
+            return x + x
+        }
+
+        func execute(i MyInterface) {
+            i.Function1()
+        }
+
+        func main() {
+            m := MyType(1)
+            execute(m)
+            execute(&m)
+        }
